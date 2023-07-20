@@ -1,7 +1,11 @@
-import { Button } from 'react-native';
+import { Button, Image } from 'react-native';
 
 export default function OtherScreen({navigation}) {
     return (
-        <Button title="Click me!" onPress={() => navigation.navigate('Home')}/>
+        <>
+            <Button title="Other" onPress={() => navigation.navigate('Home')}/>
+        </>
+        
+
     );
 };

@@ -1,7 +1,12 @@
-import { Button } from 'react-native';
+import { Button, Text} from 'react-native';
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({navigation, route}) {
+    const setHeader = route.params.setHeader;
     return (
-        <Button title="Click me!" onPress={() => navigation.navigate('Profile')}/>
+        <>
+            <Button title="Home" onPress={() => {
+                navigation.navigate('Profile');
+            }}/>
+        </>
     );
 };
