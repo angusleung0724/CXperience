@@ -1,27 +1,86 @@
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, Animated, Easing} from 'react-native';
 import { styles } from '../styles/FlightDetailsHeaderStyles';
 import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useRef, useState, useEffect} from 'react'; 
 
+function parseDateTime(dateTimeString) {
+    const date = new Date(dateTimeString);
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
+    const formattedMinute = minute < 10 ? `0${minute}` : `${minute}`;
+    return `${formattedHour}:${formattedMinute}`;
+  }
 
 export default function FlightDetailsHeader(props) {
+
+    const navigation = useNavigation();
+    const headerHeight = useRef(new Animated.Value(0)).current;
+    const headerOpacity = useRef(new Animated.Value(0)).current;
+    const [extra, setExtra] = useState(false);
+
+    const enlarge = () => {
+       setExtra(!extra);
+        Animated.timing(headerHeight, {
+            toValue: extra ? 200 : 60,
+            duration: 200,
+            useNativeDriver:false,
+          }).start();
+    }
+
+    const setHeader = () => {
+      Animated.parallel([
+        Animated.timing(headerHeight, {
+            toValue: props.isLogin ? 0 : 60,
+            duration: 200,
+            useNativeDriver:false,
+          }),
+        Animated.timing(headerOpacity, {
+            toValue: props.isLogin ? 0 : 1,
+            duration: 20,
+            useNativeDriver: false,
+        })
+      ]).start();
+    };
+
+    useEffect(() => {
+        setExtra(true);
+    }, [props]);
+
+    useEffect(() => {
+        setHeader();
+    }, [props.isLogin]);
     
     return (
-        <>
-            <View style={styles.container} >
-                <Image 
-                    source={require("../assets/logo/cathay.png")}
-                    style={styles.cathayLogo}
-                />
-                <DetailCard key1="ORG" key2="DST" val1={props.from} val2={props.to}/>
-                <DetailCard key1="GATE" key2="SEAT" val1={props.gate} val2={props.seat}/>
-                <View>
-                    <TouchableOpacity style={styles.flight}>
-                        <Text style={styles.flightText}> {props.flightNo} </Text>
+            <Animated.View style={[styles.extraContainer, {height: headerHeight, opacity: headerOpacity}]} >
+                <View style={styles.container}>
+                    <TouchableOpacity onPress={enlarge}>
+                        <Image 
+                            source={require("../assets/logo/cathay.png")}
+                            style={styles.cathayLogo}
+                        />
                     </TouchableOpacity>
-                    <Text> 13:00 </Text>
+                    
+                    <DetailCard key1="ORG" key2="DST" val1={props.from} val2={props.to}/>
+                    <DetailCard key1="GATE" key2="SEAT" val1={props.gate} val2={props.seat}/>
+                    <View style={styles.flightContainer}>
+                        <TouchableOpacity 
+                            style={styles.flight} 
+                            onPress={()=>{
+                                navigation.navigate("Login");
+                                props.setHeader(true);
+                            }}>
+                                <View style={styles.flightDetails}>
+                                    <Text style={styles.flightText}>{props.flightNo}</Text>
+                                    <Text style={styles.flightText}>|</Text>
+                                    <Text style={styles.flightText}>{parseDateTime(props.departTime)} </Text>
+                                </View>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-        </>
+                {extra ? null : <Text style={styles.extraInfo}> HELLO </Text>}
+            </Animated.View>
     );
 }
 

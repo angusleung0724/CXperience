@@ -2,34 +2,60 @@ import { StyleSheet} from 'react-native';
 import colors from '../theme/colors';
 
 export const styles = StyleSheet.create({
+    extraContainer: {
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        borderBottomColor: colors["cathay-light-gray"],
+        borderBottomWidth: 3,
+        borderTopColor: colors["cathay-light-gray"],
+        borderTopWidth:3,
+        paddingVertical:10,
+
+    },
+
+    extraInfo: {
+        margin:10
+    },
+
     container: {
         flexDirection: "row",
-        justifyContent:"flex-start",
+        justifyContent:"center",
         alignItems:"flex-start",
-        marginHorizontal:"5%",
     },
     cathayLogo: {
         width:28,
         height:28,
-        marginRight:15,
+        marginHorizontal:"2%"
+    },
+
+    flightDetails: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     flight: {
         backgroundColor:colors['cathay-dark-green'],
-        borderRadius: 50,
-        marginLeft:10,
+        borderRadius:8,
+        flexDirection:"row",
+        justifyContent: "center",
+        marginLeft:"1%"
+        
     },
 
     flightText: {
-        color: "#FFFFFF",
-        padding:6,
-        fontWeight: 700
+        color: colors["cathay-white"],
+        padding:5,
+        fontWeight: 700,
+        fontSize:21,
+        fontFamily: "Arial"
     },
 
     cardContainer: {
         flexDirection: "column",
         justifyContent: "flex-start",
-        paddingBottom: 20,
+        alignItems:"flex-start",
         marginRight: 10,
     },
     lineContainer: {
@@ -39,10 +65,14 @@ export const styles = StyleSheet.create({
     textBold: {
         fontWeight: 700,
         paddingRight: "1%",
+        fontFamily: "Arial",
+        fontSize: 14
 
     },
     textNormal: {
-        textAlign: "right"
+        textAlign: "right",
+        fontFamily: "Arial",
+        fontSize: 14
     }
 
 
