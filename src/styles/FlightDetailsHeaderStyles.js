@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
         borderTopColor: colors["cathay-light-gray"],
         borderTopWidth:3,
         paddingVertical:10,
-
     },
 
     extraInfo: {
@@ -20,13 +19,13 @@ export const styles = StyleSheet.create({
 
     container: {
         flexDirection: "row",
-        justifyContent:"center",
+        justifyContent:"space-evenly",
         alignItems:"flex-start",
     },
     cathayLogo: {
         width:28,
         height:28,
-        marginHorizontal:"2%"
+        marginHorizontal:"1%"
     },
 
     flightDetails: {
@@ -40,7 +39,7 @@ export const styles = StyleSheet.create({
         borderRadius:8,
         flexDirection:"row",
         justifyContent: "center",
-        marginLeft:"1%"
+        marginHorizontal:"1%"
         
     },
 
@@ -56,7 +55,8 @@ export const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems:"flex-start",
-        marginRight: 10,
+        marginLeft: "1%",
+        marginRight: "2.5%"
     },
     lineContainer: {
         flexDirection: "row",

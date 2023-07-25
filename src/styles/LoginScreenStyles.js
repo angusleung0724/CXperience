@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     },
 
     textInputContainer: {  
-        paddingBottom:120,
+        paddingBottom:200,
         flexDirection:"column",
         justifyContent:"center",
         alignItems:"center",

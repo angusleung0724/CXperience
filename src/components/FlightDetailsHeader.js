@@ -18,27 +18,36 @@ export default function FlightDetailsHeader(props) {
     const navigation = useNavigation();
     const headerHeight = useRef(new Animated.Value(0)).current;
     const headerOpacity = useRef(new Animated.Value(0)).current;
+    const extraOpacity = useRef(new Animated.Value(0)).current;
     const [extra, setExtra] = useState(false);
 
     const enlarge = () => {
        setExtra(!extra);
+       Animated.parallel([
         Animated.timing(headerHeight, {
             toValue: extra ? 200 : 60,
             duration: 200,
             useNativeDriver:false,
-          }).start();
+          }),
+          Animated.timing(extraOpacity, {
+            toValue: extra ? 1 : 0,
+            duration: 200,
+            useNativeDriver:false,
+          }),
+       ]).start();
+       
     }
 
     const setHeader = () => {
       Animated.parallel([
         Animated.timing(headerHeight, {
             toValue: props.isLogin ? 0 : 60,
-            duration: 200,
+            duration: 500,
             useNativeDriver:false,
           }),
         Animated.timing(headerOpacity, {
             toValue: props.isLogin ? 0 : 1,
-            duration: 20,
+            duration: 40,
             useNativeDriver: false,
         })
       ]).start();
@@ -79,7 +88,7 @@ export default function FlightDetailsHeader(props) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                {extra ? null : <Text style={styles.extraInfo}> HELLO </Text>}
+                {extra ? null : <Animated.Text style={[styles.extraInfo, {opacity: extraOpacity}]}> HELLO </Animated.Text>}
             </Animated.View>
     );
 }
