@@ -16,7 +16,7 @@ export default function LoginScreen({navigation, route}) {
         }
         setHeader(false);
         setBookingCode(text);
-        navigation.navigate('Profile');
+        navigation.navigate('Map');
     };
 
     return (

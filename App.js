@@ -3,9 +3,10 @@ import { View, Dimensions } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/pages/LoginScreen';
-import ProfileScreen from './src/pages/ProfileScreen';
+import ProfileScreen from './src/pages/MapScreen';
 import OtherScreen from './src/pages/OtherScreen';
 import FlightDetailsHeader from './src/components/FlightDetailsHeader';
+import MapScreen from './src/pages/MapScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,7 +55,7 @@ export default function App() {
                 }}>
         <NavigationContainer 
             theme={navTheme}>
-          <FlightDetailsHeader {...testFlightData[bookingCode]} setHeader={setIsLogin} isLogin={isLogin}/>
+          <FlightDetailsHeader {...testFlightData[bookingCode]} setIsLogin={setIsLogin} isLogin={isLogin}/>
           <Stack.Navigator 
             initialRouteName="Login" 
             screenOptions={{
@@ -69,8 +70,8 @@ export default function App() {
                 setBookingCode:setBookingCode
               }}/>
             <Stack.Screen 
-              name="Profile" 
-              component={ProfileScreen}
+              name="Map" 
+              component={MapScreen}
               options={{
                 headerLeft: () => <></>,
               }}

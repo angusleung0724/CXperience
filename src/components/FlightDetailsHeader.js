@@ -16,21 +16,21 @@ function parseDateTime(dateTimeString) {
 export default function FlightDetailsHeader(props) {
 
     const navigation = useNavigation();
-    const headerHeight = useRef(new Animated.Value(0)).current;
+    const headerHeight = useRef(new Animated.Value(60)).current;
     const headerOpacity = useRef(new Animated.Value(0)).current;
     const extraOpacity = useRef(new Animated.Value(0)).current;
     const [extra, setExtra] = useState(false);
 
     const enlarge = () => {
        setExtra(!extra);
-       Animated.parallel([
+       Animated.sequence([
         Animated.timing(headerHeight, {
-            toValue: extra ? 200 : 60,
+            toValue: extra ? 60 : 200,
             duration: 200,
             useNativeDriver:false,
           }),
           Animated.timing(extraOpacity, {
-            toValue: extra ? 1 : 0,
+            toValue: extra ? 0 : 1,
             duration: 200,
             useNativeDriver:false,
           }),
@@ -47,15 +47,11 @@ export default function FlightDetailsHeader(props) {
           }),
         Animated.timing(headerOpacity, {
             toValue: props.isLogin ? 0 : 1,
-            duration: 40,
+            duration: 100,
             useNativeDriver: false,
         })
       ]).start();
     };
-
-    useEffect(() => {
-        setExtra(true);
-    }, [props]);
 
     useEffect(() => {
         setHeader();
@@ -64,7 +60,9 @@ export default function FlightDetailsHeader(props) {
     return (
             <Animated.View style={[styles.extraContainer, {height: headerHeight, opacity: headerOpacity}]} >
                 <View style={styles.container}>
-                    <TouchableOpacity onPress={enlarge}>
+                    <TouchableOpacity onPress={() => {
+                        enlarge();
+                    }}>
                         <Image 
                             source={require("../assets/logo/cathay.png")}
                             style={styles.cathayLogo}
@@ -77,8 +75,12 @@ export default function FlightDetailsHeader(props) {
                         <TouchableOpacity 
                             style={styles.flight} 
                             onPress={()=>{
+                                if (extra) {
+                                    enlarge();
+                                }
                                 navigation.navigate("Login");
-                                props.setHeader(true);
+                                props.setIsLogin(true);
+                                
                             }}>
                                 <View style={styles.flightDetails}>
                                     <Text style={styles.flightText}>{props.flightNo}</Text>
@@ -88,7 +90,7 @@ export default function FlightDetailsHeader(props) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                {extra ? null : <Animated.Text style={[styles.extraInfo, {opacity: extraOpacity}]}> HELLO </Animated.Text>}
+                {extra ? <Animated.Text style={[styles.extraInfo, {opacity: extraOpacity}]}> HELLO </Animated.Text> : null }
             </Animated.View>
     );
 }
