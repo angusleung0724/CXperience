@@ -8,12 +8,12 @@ export default function MapScreen({navigation}) {
     const [mapRegion, setmapRegion] = useState({
         latitude: 22.3135,
         longitude: 113.918,
-        latitudeDelta: 1,
-        longitudeDelta: 1,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
       });
     
     const markers = [
-        // Wing First Class and Business Class
+        // Wing First Class and Business Classs
         {latitude: 22.312826038300294,
             longitude: 113.93544172093138,
             latitudeDelta: 0.5,
@@ -37,7 +37,7 @@ export default function MapScreen({navigation}) {
       
     return (
         <>
-            <Button title="here" onPress={()=>navigation.navigate("Other")}/>
+            {/* <Button title="here" onPress={()=>navigation.navigate("Other")}/> */}
         
             <View style={styles.container}>
             <MapView style={styles.map} showsUserLocation={true} region={mapRegion}>
