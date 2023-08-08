@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, SafeAreaView } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/pages/LoginScreen';
@@ -49,7 +49,7 @@ export default function App() {
   const [bookingCode, setBookingCode] = useState("1");
 
   return (
-    <View style={{
+    <SafeAreaView style={{
                   flex: 1, 
                   marginTop: marginVertical,
                 }}>
@@ -85,6 +85,6 @@ export default function App() {
               />
           </Stack.Navigator>
       </NavigationContainer>
-    </View>
+    </SafeAreaView>
   );
 }
