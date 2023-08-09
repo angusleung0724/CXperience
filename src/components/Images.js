@@ -1,0 +1,1 @@
+export const loungeIcon = require('../assets/logo/lounge.png'); 
