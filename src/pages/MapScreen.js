@@ -36,12 +36,67 @@ export default function MapScreen({ navigation }) {
     {
       type: 'Lounge',
       location: {
-        latitude: 22.312826038300294,
-        longitude: 113.93544172093138,
+        latitude: 22.312826038300291,
+        longitude: 113.93544172093134,
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
-      description: 'Wing First Class and Business Class',
+      description: 'The Wing First Class',
+      amenities: [
+        {
+          name: "Food",
+          options: ["The Haven a-la-carte", "The Haven Buffet", "The Atrium"] 
+        },
+        {
+          name: "Bar, Coffee & Tea",
+          options: ["The Haven Bar", "The Champagne Bar"] 
+        },
+        {
+          name: "Shower",
+          options: ["The Cabana", "Shower suites"]
+        },
+        {
+          name: "Massage",
+          options: []
+        },
+        {
+          name: "Others",
+          options: ["Workstation"]
+        }
+      ]
+    },
+    {
+      type: 'Lounge',
+      location: {
+
+        latitude:  22.312660183084212,
+        longitude:  113.93553227643987,
+        latitudeDelta: 0.5,
+        longitudeDelta: 0.5,
+      },
+      description: 'The Wing Business Class',
+      amenities: [
+        {
+          name: "Food",
+          options: ["The Noodle Bar", "The Noodle Bar Buffet", "Central self-serve buffet"] 
+        },
+        {
+          name: "Bar, Coffee & Tea",
+          options: ["The Long Bar", "The Coffee Loft"] 
+        },
+        {
+          name: "Shower",
+          options: []
+        },
+        {
+          name: "Massage",
+          options: []
+        },
+        {
+          name: "Others",
+          options: ["Luggage rack"]
+        }
+      ]
     },
     {
       type: 'Lounge',
@@ -51,7 +106,29 @@ export default function MapScreen({ navigation }) {
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
-      description: 'The Pier Business Class',
+      description: 'The Pier First Class',
+      amenities: [
+        {
+          name: "Food",
+          options: ["The Dining Room", "The Pantry"] 
+        },
+        {
+          name: "Bar, Coffee & Tea",
+          options: ["The Bar"] 
+        },
+        {
+          name: "Shower",
+          options: ["Day Suites", "Shower suites"]
+        },
+        {
+          name: "Massage",
+          options: ["Massage"]
+        },
+        {
+          name: "Others",
+          options: ["Concierge", "Workstation"]
+        }
+      ]
     },
     {
       type: 'Lounge',
@@ -61,7 +138,29 @@ export default function MapScreen({ navigation }) {
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
-      description: 'The Pier First Class',
+      description: 'The Pier Business Class',
+      amenities: [
+        {
+          name: "Food",
+          options: ["The Noodle Bar", "The Noodle Bar Buffet", "Food Hall", "Tea House"] 
+        },
+        {
+          name: "Bar, Coffee & Tea",
+          options: ["The Bar", "Tea House"] 
+        },
+        {
+          name: "Shower",
+          options: ["Shower suites"]
+        },
+        {
+          name: "Massage",
+          options: []
+        },
+        {
+          name: "Others",
+          options: ["Lockers", "Workstation"]
+        }
+      ]
     },
     {
       type: 'Lounge',
@@ -72,6 +171,28 @@ export default function MapScreen({ navigation }) {
         longitudeDelta: 0.5,
       },
       description: 'The Deck Business Class',
+      amenities: [
+        {
+          name: "Food",
+          options: ["The Noodle Bar", "Self-service buffer"] 
+        },
+        {
+          name: "Bar, Coffee & Tea",
+          options: [] 
+        },
+        {
+          name: "Shower",
+          options: ["Shower suites"]
+        },
+        {
+          name: "Massage",
+          options: []
+        },
+        {
+          name: "Others",
+          options: ["Lockers"]
+        }
+      ]
     },
   ];
 
