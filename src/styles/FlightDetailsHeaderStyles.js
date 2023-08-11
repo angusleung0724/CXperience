@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
         padding:5,
         fontWeight: 700,
         fontSize:21,
-        fontFamily: "Arial"
+        fontFamily: "Sansation-Bold"
     },
 
     cardContainer: {
@@ -63,16 +63,18 @@ export const styles = StyleSheet.create({
         alignItems: "flex-start"
     },
     textBold: {
+        color: colors["cathay-black"],
         fontWeight: 700,
         paddingRight: "1%",
-        fontFamily: "Arial",
-        fontSize: 14
-
+        fontSize: 14,
+        fontFamily: "Sansation-BoldItalic"
+    
     },
     textNormal: {
+        color: colors["cathay-dark-green"],
         textAlign: "right",
-        fontFamily: "Arial",
-        fontSize: 14
+        fontSize: 14,
+        fontFamily:"Sansation-BoldItalic"
     }
 
 

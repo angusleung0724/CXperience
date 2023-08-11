@@ -101,7 +101,7 @@ function DetailCard(props) {
             <View style={styles.cardContainer}>
                 <View style={styles.lineContainer}>
                     <Text style={styles.textBold}>
-                        {props.key1}:
+                        {props.key1}:{' '}
                     </Text>
                     <Text style={styles.textNormal}>
                         {props.val1}
@@ -109,7 +109,7 @@ function DetailCard(props) {
                 </View>
                 <View style={styles.lineContainer}>
                     <Text style={styles.textBold}>
-                        {props.key2}:
+                        {props.key2}:{' '}
                     </Text>
                     <Text style={styles.textNormal}>
                         {props.val2}

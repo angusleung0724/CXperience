@@ -5,7 +5,7 @@ import LoungeDetailsModal from "../components/LoungeDetailsModal";
 
 const data = {
   name : "The Wing",
-  class : "First Class",
+  className : "First Class",
   maxCapacity : 100,
   currCapacity : 67,
   amenities : ["Food, Drink, Bath"],

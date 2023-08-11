@@ -1,5 +1,5 @@
-import React, {useState } from 'react';
-import { View, Dimensions, SafeAreaView } from 'react-native';
+import React, {useState, useCallback } from 'react';
+import { View, Dimensions, SafeAreaView, Text } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/pages/LoginScreen';
@@ -8,13 +8,18 @@ import OtherScreen from './src/pages/OtherScreen';
 import FlightDetailsHeader from './src/components/FlightDetailsHeader';
 import MapScreen from './src/pages/MapScreen';
 
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
+
 const Stack = createNativeStackNavigator();
 
 const {width, height} = Dimensions.get("window");
 const marginVertical = height * 0.07;
 
 const testFlightData = {
-  "1" : {
+  "123456" : {
     from: "HNG",
     to: "HKG",
     flightNo: "CX256",
@@ -47,9 +52,29 @@ const navTheme = {
 export default function App() {
   const [isLogin, setIsLogin] = useState(true);
   const [bookingCode, setBookingCode] = useState("1");
+  const [fontsLoaded] = useFonts({
+    'Sansation-Bold': require('./assets/fonts/Sansation-Bold.ttf'),
+    'Sansation-BoldItalic': require('./assets/fonts/Sansation-BoldItalic.ttf'),
+    'Sansation-Italic': require('./assets/fonts/Sansation-Italic.ttf'),
+    'Sansation-Light': require('./assets/fonts/Sansation-Light.ttf'),
+    'Sansation-LightItalic': require('./assets/fonts/Sansation-LightItalic.ttf'),
+    'Sansation-Regular': require('./assets/fonts/Sansation-Regular.ttf'),
+
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
-    <SafeAreaView style={{
+    <SafeAreaView onLayout={onLayoutRootView}
+                  style={{
                   flex: 1, 
                   marginTop: marginVertical,
                 }}>

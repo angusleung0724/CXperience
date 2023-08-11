@@ -12,7 +12,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 
 
-export default function LoungeDetailsModal({imagePath, modalVisible, setModalVisible, maxCapacity, currCapacity}) {
+export default function LoungeDetailsModal({className, imagePath, modalVisible, setModalVisible, maxCapacity, currCapacity, name}) {
     const toggleModal = () => {
         setModalVisible(!modalVisible);
     }
@@ -34,16 +34,30 @@ export default function LoungeDetailsModal({imagePath, modalVisible, setModalVis
                             <View style={styles.contentContainer}>
                                 <View style={styles.imageContainer}>
                                     <Image style={styles.heroImage} source={imagePath}/>
+                                    <View style={styles.nameContainer}>
+                                        <Text style={styles.name}> 
+                                            {name}
+                                        </Text>
+                                        <Text style={styles.class}> 
+                                            {className}
+                                        </Text>
+                                    </View>
                                     <TouchableOpacity onPress={toggleModal}>
                                         <Icon name="close" style={styles.closeButton}/>
                                     </TouchableOpacity>
                                 </View>
+
+                                
                                 <View style={styles.progressContainer}>
+                                    <View style={styles.titleContainer}>
+                                        <Text style={styles.cardTitle}>
+                                            Capacity
+                                        </Text>
+                                    </View>
                                     <AnimatedCircularProgress
                                         style={styles.progressBar}
                                         size={200}
                                         width={20}
-                                        tintTransparency={0}
                                         rotation={0}
                                         fill={calculatePercent()}
                                         duration={1300}
@@ -51,13 +65,26 @@ export default function LoungeDetailsModal({imagePath, modalVisible, setModalVis
                                         backgroundColor={colors["cathay-light-gray"]}>
                                         {
                                             (fill) => (
-                                            <Text style={styles.progressText}>
-                                                {`${parseInt(fill * maxCapacity / 100)} OUT OF ${maxCapacity}` }
-                                            </Text>
+                                                <View style={styles.progressTextContainer}>
+                                                    <View style={styles.progressTextTop}>
+                                                        <Text style={styles.progressText}>
+                                                            {`${parseInt(fill * maxCapacity / 100)}`}
+                                                        </Text>
+                                                    </View>
+                                                    <Text style={styles.progressTextBottom}>
+                                                        {maxCapacity}
+                                                    </Text>
+                                                </View>
                                             )
                                         }
                                     </AnimatedCircularProgress>
                                 </View>
+
+
+
+
+
+
                             </View>
                         </View>
                     </View>

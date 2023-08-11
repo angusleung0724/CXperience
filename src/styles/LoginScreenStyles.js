@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
         flexDirection:"column",
         justifyContent:"center",
         alignItems:"center",
+        
 
     },
 
@@ -39,6 +40,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal:"8%",
         fontSize:18,
         fontWeight:"normal",
+        fontFamily:"Sansation-Regular"
 
     },
 
@@ -48,5 +50,6 @@ export const styles = StyleSheet.create({
         fontSize: 75,
         fontFamily: "Arial",
         marginHorizontal:"10%",
+        fontFamily:"Sansation-Regular"
     }
 });
