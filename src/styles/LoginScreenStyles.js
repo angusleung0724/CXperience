@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
         flexDirection:"column",
         backgroundColor: colors['cathay-white'],
         justifyContent: "space-evenly",
-        alignItems: "center"
+        alignItems: "center",
+        top:"4%"
 
     },
 
@@ -17,7 +18,6 @@ export const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         
-
     },
 
     image: {

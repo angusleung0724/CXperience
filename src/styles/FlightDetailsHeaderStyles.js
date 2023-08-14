@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     cathayLogo: {
         width:28,
         height:28,
-        marginHorizontal:"1%"
+        marginRight:"4%"
     },
 
     flightDetails: {
@@ -75,7 +75,23 @@ export const styles = StyleSheet.create({
         textAlign: "right",
         fontSize: 14,
         fontFamily:"Sansation-BoldItalic"
-    }
+    },
+    barcode: {
+        width:360,
+        height:"auto",
+        aspectRatio:3
 
+    },
+    qrLogo:{
+        position:"absolute",
+        fontSize:17,
+        right:4,
+        top:-3,
+        color:colors["cathay-black"],
+    },
+    leftIcon:{
+        justifyContent:"center",
+        alignItems:"center"
+    }
 
 });

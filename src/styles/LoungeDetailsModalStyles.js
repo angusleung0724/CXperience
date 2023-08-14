@@ -32,18 +32,18 @@ export const styles = StyleSheet.create({
   },
   imageContainer: {
     flex:1,
-    position: "relative"
+  
   },
   closeButton: {
     position:"absolute",
     right:15,
     top:-320,
-    fontSize: 25,
+    fontSize: 35,
     color:colors["cathay-white"],
-    fontWeight:700,
     shadowColor:colors["cathay-black"],
     shadowOpacity:1,
-    shadowRadius:200,
+    textShadowRadius:100,
+    textShadowOffset:{width: -100, height: -100}
   },
   contentContainer: {
     flex:1,
@@ -53,8 +53,7 @@ export const styles = StyleSheet.create({
   progressBar: {
     justifyContent:"center",
     alignItems:"center",
-    position:"absolute",
-    bottom:"20%"
+    marginTop:"6%"
   },
   progressText: {
     fontFamily:"Sansation-BoldItalic",
@@ -64,18 +63,18 @@ export const styles = StyleSheet.create({
   },
   progressTextTop: {
     borderBottomColor:colors["cathay-dark-green"],
-    borderBottomWidth: 2
+    borderBottomWidth: 0
   },
 
   progressTextBottom: {
-    fontFamily:"Sansation-BoldItalic",
-    color:colors["cathay-dark-green"],
+    fontFamily:"Sansation-Regular",
+    color:colors["cathay-black"],
     textAlign:"center",
-    fontSize:28
+    fontSize:14
   },
   progressContainer: {
     flex:1,
-    justifyContent:"center",
+    justifyContent:"flex-start",
     alignItems:"center",
     flexDirection:"column"
   },
@@ -109,12 +108,41 @@ export const styles = StyleSheet.create({
   },
   cardTitle:{
     color:colors["cathay-black"],
-    fontSize:40,
+    fontSize:35,
     fontFamily: "Sansation-Regular",
   },
   titleContainer:{
     justifyContent:"center",
-    position:"absolute",
-    top:"2%",    
+    marginTop:"4%"
+  },
+  fractionContainer:{
+    marginTop:4,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-evenly",
+  },
+  personIcon:{
+    fontSize:16
+  },
+  buttonGroup:{
+    marginBottom:10,
+    borderRadius:10,
+    borderColor: colors["cathay-dark-dark-green"]
+  },
+  descriptionBox: {
+    backgroundColor: colors["cathay-light-green"],
+    padding:15,
+    marginVertical: 7,
+    borderRadius:10,
+  },
+  description: {
+    fontSize: 15,
+    fontFamily:"Sansation-Regular"
+  },
+  scrollView:{
+    position:"relative",
+    width: 280,
+    marginTop:"2%",
+    marginBottom:"5%",
   }
 });

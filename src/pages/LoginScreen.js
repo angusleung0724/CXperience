@@ -10,7 +10,7 @@ export default function LoginScreen({navigation, route}) {
     const setBookingCode = route.params.setBookingCode;
     const setHeader = route.params.setHeader;
 
-    // HERE NEED TO USE AUTH FROM DB
+    // HERE NEED TO USE AUTH FROM DB (maybe not)
     const handlePress = () => {
         if (text != "123456" && text != "2") {
             alert("Invalid Code!");
@@ -24,7 +24,7 @@ export default function LoginScreen({navigation, route}) {
     return (
         <View style={styles.container}>
             <Image 
-                source={require("../assets/logo/cathay.png")}
+                source={require("../assets/logo/cathay_logo_gold.png")}
                 style={styles.image}
                 />
             <View style={styles.textInputContainer}>

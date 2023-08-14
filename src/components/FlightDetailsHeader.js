@@ -3,6 +3,8 @@ import { styles } from '../styles/FlightDetailsHeaderStyles';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useRef, useState, useEffect} from 'react'; 
+import AntIcon from 'react-native-vector-icons/AntDesign';
+
 
 function parseDateTime(dateTimeString) {
     const date = new Date(dateTimeString);
@@ -61,14 +63,18 @@ export default function FlightDetailsHeader(props) {
             <Animated.View style={[styles.extraContainer, {height: headerHeight, opacity: headerOpacity}]} >
                 <View style={styles.container}>
                     <TouchableOpacity onPress={() => {
-                        enlarge();
-                    }}>
-                        <Image 
-                            source={require("../assets/logo/cathay.png")}
-                            style={styles.cathayLogo}
-                        />
+                            enlarge();
+                        }}>
+                            <View style={styles.leftIcon}>
+                                
+                                    <Image 
+                                        source={require("../assets/logo/cathay_logo_gold.png")}
+                                        style={styles.cathayLogo}
+                                    />
+                                
+                                <AntIcon name="qrcode" style={styles.qrLogo}/>
+                            </View>
                     </TouchableOpacity>
-                    
                     <DetailCard key1="ORG" key2="DST" val1={props.from} val2={props.to}/>
                     <DetailCard key1="GATE" key2="SEAT" val1={props.gate} val2={props.seat}/>
                     <View style={styles.flightContainer}>
@@ -90,7 +96,9 @@ export default function FlightDetailsHeader(props) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                {extra ? <Animated.Text style={[styles.extraInfo, {opacity: extraOpacity}]}> HELLO </Animated.Text> : null }
+                {extra ? <Animated.View style={[styles.extraInfo, {opacity: extraOpacity}]}> 
+                            <Image style={styles.barcode} source={require('../assets/images/barcode.png')}/>
+                         </Animated.View> : null }
             </Animated.View>
     );
 }

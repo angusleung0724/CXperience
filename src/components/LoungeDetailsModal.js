@@ -1,9 +1,15 @@
-import { useEffect } from 'react';
-import { Text, Modal, View, StyleSheet, TouchableOpacity, Image,  } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { Text, Modal, View, TouchableOpacity, Image, ScrollView, Animated, Easing} from 'react-native';
 import { styles } from '../styles/LoungeDetailsModalStyles';
 import Icon from 'react-native-vector-icons/AntDesign';
+import Octicon from 'react-native-vector-icons/Octicons';
+import Ionicon from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome5';
+import Feather from 'react-native-vector-icons/Feather';
 import colors from "../theme/colors";
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { ButtonGroup } from '@rneui/themed';
+
 
 
 // pass in modalvisible, set modal visible
@@ -12,14 +18,43 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 
 
-export default function LoungeDetailsModal({className, imagePath, modalVisible, setModalVisible, maxCapacity, currCapacity, name}) {
+const points= [
+        "It has food 1",
+        "It has food 2",
+        "It has food 3",
+        "It has food 4",
+        "It has food 1",
+        "It has food 2",
+        "It has food 3",
+        "It has food 4",
+    ];
+
+const points2= [
+        "It has food 2",
+        "It has food 3",
+        "It has food 10232",
+        "It has food 4",
+    ];
+
+
+
+export default function LoungeDetailsModal({
+    className, 
+    imagePath, 
+    modalVisible, 
+    setModalVisible, 
+    maxCapacity, 
+    currCapacity, 
+    food,
+    beverage,
+    shower,
+    more,
+    name}) {
     const toggleModal = () => {
         setModalVisible(!modalVisible);
     }
-
-    const calculatePercent = () => {
-        return Math.floor(currCapacity * 100 / maxCapacity);
-    }
+    const [currCard, setCurrCard] = useState(0);
+    
 
     return (
         <>
@@ -46,50 +81,143 @@ export default function LoungeDetailsModal({className, imagePath, modalVisible, 
                                         <Icon name="close" style={styles.closeButton}/>
                                     </TouchableOpacity>
                                 </View>
-
-                                
-                                <View style={styles.progressContainer}>
-                                    <View style={styles.titleContainer}>
-                                        <Text style={styles.cardTitle}>
-                                            Capacity
-                                        </Text>
-                                    </View>
-                                    <AnimatedCircularProgress
-                                        style={styles.progressBar}
-                                        size={200}
-                                        width={20}
-                                        rotation={0}
-                                        fill={calculatePercent()}
-                                        duration={1300}
-                                        tintColor={colors["cathay-dark-green"]}
-                                        backgroundColor={colors["cathay-light-gray"]}>
-                                        {
-                                            (fill) => (
-                                                <View style={styles.progressTextContainer}>
-                                                    <View style={styles.progressTextTop}>
-                                                        <Text style={styles.progressText}>
-                                                            {`${parseInt(fill * maxCapacity / 100)}`}
-                                                        </Text>
-                                                    </View>
-                                                    <Text style={styles.progressTextBottom}>
-                                                        {maxCapacity}
-                                                    </Text>
-                                                </View>
-                                            )
-                                        }
-                                    </AnimatedCircularProgress>
-                                </View>
-
-
-
-
-
-
+                                {currCard == 0 ? <ProgressBar maxCapacity={maxCapacity} currCapacity={currCapacity}/> : null}
+                                {currCard == 1 ? <InfoPage title="Food" points={food}/> : null}
+                                {currCard == 2 ? <InfoPage title="Beverage" points={beverage}/> :null}
+                                {currCard == 3 ? <InfoPage title="Showers" points={shower}/> : null}
+                                {currCard == 4 ? <InfoPage title="Miscellaneous" points={more}/>  : null}
+                                <ButtonGroup
+                                    containerStyle={styles.buttonGroup}
+                                    buttonStyle={{padding: 10 }}
+                                    selectedButtonStyle={{ backgroundColor: colors["cathay-dark-green"] }}
+                                    innerBorderStyle={{color:colors["cathay-dark-dark-green"]}}
+                                    buttons={[
+                                    <Ionicon name="people" style={{fontSize:20}}/>,
+                                    <FontAwesome name="utensils" style={{fontSize:20}} />,
+                                    <Ionicon name="wine" style={{fontSize:20}} />,
+                                    <FontAwesome name="shower" style={{fontSize:20}} />,
+                                    <Feather name="more-horizontal" style={{fontSize:20}}/>,
+                                    ]}
+                                    selectedIndex={currCard}
+                                    onPress={setCurrCard}
+                                    />
                             </View>
                         </View>
                     </View>
                 </Modal>
             </View>
         </>
+    );
+}
+
+const InfoPage = (props) => {
+
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+    const slideAnim = useRef(new Animated.Value(100)).current;
+    useEffect(() => {
+        Animated.parallel([
+          Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 700, // Adjust the duration as needed
+            useNativeDriver: true,
+          }),
+          Animated.timing(slideAnim, {
+            toValue: 0,
+            duration: 500, // Adjust the duration as needed
+            useNativeDriver: true,
+            easing: Easing.inOut(Easing.ease),
+          }),
+        ]).start();
+        }, []);
+    return (
+        <>
+            <View style={styles.progressContainer}>
+                <Animated.View style={[styles.titleContainer, {opacity:fadeAnim, transform:[{translateX:slideAnim}]}]}>
+                    <Text style={styles.cardTitle}>
+                        {props.title}
+                    </Text>
+                </Animated.View>
+                <ScrollView style={styles.scrollView}>
+                    {props.points.map((item,index) => {
+                        return(
+                            <Description index={index} item={item}/>);
+                    })}
+                </ScrollView>
+            </View>
+        </>
+    );
+}
+
+
+const Description = ({index, item}) => {
+  
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(100)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 700, // Adjust the duration as needed
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 500, // Adjust the duration as needed
+        useNativeDriver: true,
+        easing: Easing.inOut(Easing.ease),
+      }),
+    ]).start();
+    }, []);
+    return (
+        <Animated.View style={[styles.descriptionBox, {opacity:fadeAnim, transform:[{translateX:slideAnim}]}]} key={index}>
+            <Text style={styles.description}>
+                {item}
+            </Text>
+        </Animated.View>
+    );
+}
+
+
+
+const ProgressBar = ({maxCapacity, currCapacity}) => {
+    const calculatePercent = () => {
+        return Math.floor(currCapacity * 100 / maxCapacity);
+    }
+    return (
+        <View style={styles.progressContainer}>
+            <View style={styles.titleContainer}>
+                <Text style={styles.cardTitle}>
+                    Capacity
+                </Text>
+            </View>
+            <AnimatedCircularProgress
+                style={styles.progressBar}
+                size={240}
+                width={20}
+                rotation={0}
+                fill={calculatePercent()}
+                duration={1300}
+                tintColor={colors["cathay-dark-green"]}
+                backgroundColor={colors["cathay-light-gray"]}>
+                {
+                    (fill) => (
+                        <View style={styles.progressTextContainer}>
+                            <View style={styles.progressTextTop}>
+                                <Text style={styles.progressText}>
+                                    {`${parseInt(fill )}%`}
+                                </Text>
+                            </View>
+                            <View style={styles.fractionContainer}>
+                                <Octicon style={styles.personIcon} name="person"/>
+                                <Text style={styles.progressTextBottom}>
+                                    {`${currCapacity}/${maxCapacity}`}
+                                </Text>
+                            </View>
+                        </View>
+                    )
+                }
+            </AnimatedCircularProgress>
+        </View>
     );
 }
