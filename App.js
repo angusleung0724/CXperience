@@ -23,114 +23,96 @@ const marginVertical = height * 0.07;
 
 // ALL HARDCODED DATA TO BE PASSED IN
 const testFlightData = {
-  "123456" : {
-    from: "HNG",
-    to: "HKG",
-    flightNo: "CX256",
-    departTime: "2018-06-12 09:55:22",
-    gate: "24",
-    seat: "13E",
-    class: "Economy",
+    "1": {
+      from: "TPE",
+      to: "HKG",
+      flightNo: "CX407",
+      departTime: "2023-08-15 10:55:52",
+      gate: "I9",
+      seat: "4F",
+      class: "Economy"
   },
-  "11" : {
-    from: "JPN",
-    to: "NYC",
-    flightNo: "CX120",
-    departTime: "2018-02-12 12:35:22",
-    gate: "34",
-    seat: "19K",
-    class: "First Class",
-  }, 
-  "1": {
-    from: "Taipei",
-    to: "Hong Kong",
-    flightNo: "CX407",
-    departTime: "2023-08-15 10:55 AM",
-    gate: "I9",
-    seat: "4F",
+  "2": {
+      from: "HKG",
+      to: "YVR",
+      flightNo: "CX838",
+      departTime: "2023-08-15 05:40:00",
+      gate: "J10",
+      seat: "9B",
+      class: "Premium Economy"
+  },
+  "3": {
+    from: "HKG",
+    to: "NRT",
+    flightNo: "CX524",
+    departTime: "2023-08-11 09:00:00",
+    gate: "A1",
+    seat: "12A",
     class: "Economy"
-},
-"2": {
-    from: "Hong Kong",
-    to: "Vancouver",
-    flightNo: "CX838",
-    departTime: "2023-08-15 05:40 PM",
-    gate: "J10",
-    seat: "9B",
-    class: "Premium Economy"
-},
-"3": {
-  from: "Hong Kong",
-  to: "Tokyo",
-  flightNo: "CX524",
-  departTime: "2023-08-11 09:00 AM",
-  gate: "A1",
-  seat: "12A",
-  class: "Economy"
-},
-"4": {
-    from: "Seoul",
-    to: "Hong Kong",
-    flightNo: "CX416",
-    departTime: "2023-08-11 12:30 PM",
-    gate: "B2",
-    seat: "5C",
-    class: "Premium Economy"
-},
-"5": {
-    from: "Hong Kong",
-    to: "Singapore",
-    flightNo: "CX739",
-    departTime: "2023-08-12 02:45 AM",
-    gate: "C3",
-    seat: "20D",
-    class: "Economy"
-},
-"6": {
-    from: "Hong Kong",
-    to: "London",
-    flightNo: "CX252",
-    departTime: "2023-08-12 06:15 PM",
-    gate: "D4",
-    seat: "8B",
-    class: "Business"
-},
-"7": {
-    from: "Beijing",
-    to: "Hong Kong",
-    flightNo: "CX390",
-    departTime: "2023-08-13 08:20 AM",
-    gate: "E5",
-    seat: "15F",
-    class: "Economy"
-},
-"8": {
-    from: "Hong Kong",
-    to: "Sydney",
-    flightNo: "CX138",
-    departTime: "2023-08-13 03:10 PM",
-    gate: "F6",
-    seat: "2A",
-    class: "Premium Economy"
-},
-"9": {
-    from: "Hong Kong",
-    to: "Bangkok",
-    flightNo: "CX703",
-    departTime: "2023-08-14 11:45 AM",
-    gate: "G7",
-    seat: "10C",
-    class: "Economy"
-},
-"10": {
-    from: "Hong Kong",
-    to: "San Francisco",
-    flightNo: "CX870",
-    departTime: "2023-08-14 08:30 PM",
-    gate: "H8",
-    seat: "16D",
-    class: "Business"
-},
+  },
+  "4": {
+      from: "ICN",
+      to: "HKG",
+      flightNo: "CX416",
+      departTime: "2023-08-11 12:30:00",
+      gate: "B2",
+      seat: "5C",
+      class: "Premium Economy"
+  },
+  "5": {
+      from: "HKG",
+      to: "SIN",
+      flightNo: "CX739",
+      departTime: "2023-08-12 02:45:00",
+      gate: "C3",
+      seat: "20D",
+      class: "Economy"
+  },
+  "6": {
+      from: "HKG",
+      to: "LHR",
+      flightNo: "CX252",
+      departTime: "2023-08-12 06:15:00",
+      gate: "D4",
+      seat: "8B",
+      class: "Business"
+  },
+  "7": {
+      from: "PEK",
+      to: "HKG",
+      flightNo: "CX390",
+      departTime: "2023-08-13 08:20:00",
+      gate: "E5",
+      seat: "15F",
+      class: "Economy"
+  },
+  "8": {
+      from: "HKG",
+      to: "SYD",
+      flightNo: "CX138",
+      departTime: "2023-08-13 03:10:00",
+      gate: "F6",
+      seat: "2A",
+      class: "Premium Economy"
+  },
+  "9": {
+      from: "HKG",
+      to: "BKK",
+      flightNo: "CX703",
+      departTime: "2023-08-14 11:45:00",
+      gate: "G7",
+      seat: "10C",
+      class: "Economy"
+  },
+  "10": {
+      from: "HKG",
+      to: "SFO",
+      flightNo: "CX870",
+      departTime: "2023-08-14 08:30:00",
+      gate: "H8",
+      seat: "16D",
+      class: "Business"
+  },
 }
 
 
