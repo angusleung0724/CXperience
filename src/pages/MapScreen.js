@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Touchable } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Touchable, Animated, Easing} from 'react-native';
 import {SearchBar} from 'react-native-elements';
-import MapView, { Marker, Callout, Animated } from 'react-native-maps';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import MapIcon from 'react-native-vector-icons/FontAwesome';
 import LoungeDetailsModal from "../components/LoungeDetailsModal";
 import colors from '../theme/colors';
@@ -10,21 +10,22 @@ export default function MapScreen({ navigation, route}) {
   const [modalVisible, setModalVisible] = useState(false)
   const loungeData = route.params.loungeData.testLoungeData;
   const [currLounge, setCurrLounge] = useState("The Deck, Business Class");
+  const [dropDown, setDropdown] = useState(false);
 
 
   const [mapRegion, setMapRegion] = useState({
     latitude: 22.313783,
     longitude: 113.930166,
-    latitudeDelta: 0.013,
-    longitudeDelta: 0.013,
+    latitudeDelta: 0.016,
+    longitudeDelta: 0.016,
   });
 
   const resetRegion = () => {
     setMapRegion({
       latitude: 22.313783,
       longitude: 113.930166,
-      latitudeDelta: 0.013,
-      longitudeDelta: 0.013,
+      latitudeDelta: 0.016,
+      longitudeDelta: 0.016,
     });
   }
 
@@ -32,22 +33,22 @@ export default function MapScreen({ navigation, route}) {
     {
       type: 'Lounge',
       location: {
-        latitude: 22.312826038300294,
+        latitude: 22.312526038300294,
         longitude: 113.93544172093138,
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
-      description: 'The Wing, First Class',
+      description: 'The Wing, Business Class',
     },
     {
       type: 'Lounge',
       location: {
-        latitude: 22.314426038300294,
-        longitude: 113.93244172093138,
+        latitude: 22.313326038300294,
+        longitude: 113.93514172093138,
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
-      description: 'The Wing, Business Class',
+      description: 'The Wing, First Class',
     },
     {
       type: 'Lounge',
@@ -72,8 +73,8 @@ export default function MapScreen({ navigation, route}) {
     {
       type: 'Lounge',
       location: {
-        latitude: 22.317444072373544,
-        longitude: 113.9336729294858,
+        latitude: 22.317384072373544,
+        longitude: 113.9336629294858,
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
@@ -130,15 +131,58 @@ export default function MapScreen({ navigation, route}) {
             <MapIcon name="location-arrow" style={styles.locationArrow}/>
           </TouchableOpacity>
         </View>
-        <View style={styles.instruction}>
+        <TouchableOpacity style={styles.instruction} 
+          onPress={() => {
+            if (!dropDown) {
+              setDropdown(true);
+              setMapRegion({
+                latitude: 22.317384072373544,
+                longitude: 113.9336629294858,
+                latitudeDelta: 0.001,
+                longitudeDelta: 0.001
+              });
+            } else {
+              setDropdown(false);
+              resetRegion();
+            }   
+          }}>
           <Text style={styles.instructionText}>
-            Click on a lounge
+            Click on a lounge 
           </Text>
           <MapIcon name="map-marker" style={styles.markerIcon}/>
-        </View>
+        </TouchableOpacity>
+        {dropDown?  <DropDown/> : null}
       </View>
     </View>
   );
+}
+
+const DropDown = () => {
+  const opac = useRef(new Animated.Value(0)).current;
+  const transY = useRef(new Animated.Value(-30)).current;
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(opac, {
+        toValue: 1,
+        duration: 700, // Adjust the duration as needed
+        useNativeDriver: true,
+      }),
+      Animated.timing(transY, {
+        toValue: 0,
+        duration: 500, // Adjust the duration as needed
+        useNativeDriver: true,
+        easing: Easing.inOut(Easing.ease),
+      }),
+    ]).start();
+    }, []);
+  return (
+    <Animated.View style={[styles.instruction2, {opacity:opac, transform:[{translateY:transY}]}]}>
+            <Text style={styles.instructionText2}>
+              Recommended: The Deck, Business Class
+            </Text>
+    </Animated.View> 
+  );
+
 }
 
 
@@ -204,10 +248,29 @@ const styles = StyleSheet.create({
     fontSize:20,
     color:colors["cathay-dark-green"]
   },
+  instructionText2:{
+    fontFamily:"Sansation-Bold",
+    fontSize:10,
+    color:colors["cathay-dark-green"]
+  },
   markerIcon:{
     marginLeft:10,
     marginRight: 5,
     fontSize:23,
     color: colors["cathay-dark-green"]
-  }
+  },
+  instruction2: {
+    position:"absolute",
+    top:65,
+    left:10,
+    backgroundColor: colors["cathay-white"],
+    paddingHorizontal:12,
+    paddingVertical:5,
+    borderRadius:10,
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems :"center"
+
+  },
+
 });

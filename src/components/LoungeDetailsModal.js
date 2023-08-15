@@ -33,25 +33,6 @@ const db = getFirestore(app)
 
 
 
-const points= [
-        "It has food 1",
-        "It has food 2",
-        "It has food 3",
-        "It has food 4",
-        "It has food 1",
-        "It has food 2",
-        "It has food 3",
-        "It has food 4",
-    ];
-
-const points2= [
-        "It has food 2",
-        "It has food 3",
-        "It has food 10232",
-        "It has food 4",
-    ];
-
-
 
 export default function LoungeDetailsModal({
     className, 
@@ -223,7 +204,8 @@ const ProgressBar = ({maxCapacity, currCapacity, action}) => {
             <ScrollView
                 bounces={false} refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            }>
+            }
+                showsVerticalScrollIndicator={false}>
                 <AnimatedCircularProgress
                     style={styles.progressBar}
                     size={240}
