@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
   progressBar: {
     justifyContent:"center",
     alignItems:"center",
-    marginTop:"6%"
+    marginTop:"8%"
   },
   progressText: {
     fontFamily:"Sansation-BoldItalic",
