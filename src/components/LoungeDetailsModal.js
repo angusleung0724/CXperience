@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { Text, Modal, View, TouchableOpacity, Image, ScrollView, Animated, Easing} from 'react-native';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { Text, Modal, View, TouchableOpacity, Image, ScrollView, Animated, Easing, RefreshControl} from 'react-native';
 import { styles } from '../styles/LoungeDetailsModalStyles';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Octicon from 'react-native-vector-icons/Octicons';
@@ -184,6 +184,14 @@ const ProgressBar = ({maxCapacity, currCapacity}) => {
     const calculatePercent = () => {
         return Math.floor(currCapacity * 100 / maxCapacity);
     }
+    const [refreshing, setRefreshing] = useState(false);
+
+    // ADD API CALL HERE ? and useEffect as well probably to update the state (initialise with the props one)
+    const onRefresh = useCallback(()=> {
+        setRefreshing(true);
+        console.log("gay");
+        setTimeout(() => {setRefreshing(false)}, 2000);
+    });
     return (
         <View style={styles.progressContainer}>
             <View style={styles.titleContainer}>
@@ -191,33 +199,38 @@ const ProgressBar = ({maxCapacity, currCapacity}) => {
                     Capacity
                 </Text>
             </View>
-            <AnimatedCircularProgress
-                style={styles.progressBar}
-                size={240}
-                width={20}
-                rotation={0}
-                fill={calculatePercent()}
-                duration={1300}
-                tintColor={colors["cathay-dark-green"]}
-                backgroundColor={colors["cathay-light-gray"]}>
-                {
-                    (fill) => (
-                        <View style={styles.progressTextContainer}>
-                            <View style={styles.progressTextTop}>
-                                <Text style={styles.progressText}>
-                                    {`${parseInt(fill )}%`}
-                                </Text>
+            <ScrollView
+                refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }>
+                <AnimatedCircularProgress
+                    style={styles.progressBar}
+                    size={240}
+                    width={20}
+                    rotation={0}
+                    fill={calculatePercent()}
+                    duration={1300}
+                    tintColor={colors["cathay-dark-green"]}
+                    backgroundColor={colors["cathay-light-gray"]}>
+                    {
+                        (fill) => (
+                            <View style={styles.progressTextContainer}>
+                                <View style={styles.progressTextTop}>
+                                    <Text style={styles.progressText}>
+                                        {`${parseInt(fill )}%`}
+                                    </Text>
+                                </View>
+                                <View style={styles.fractionContainer}>
+                                    <Octicon style={styles.personIcon} name="person"/>
+                                    <Text style={styles.progressTextBottom}>
+                                        {`${currCapacity}/${maxCapacity}`}
+                                    </Text>
+                                </View>
                             </View>
-                            <View style={styles.fractionContainer}>
-                                <Octicon style={styles.personIcon} name="person"/>
-                                <Text style={styles.progressTextBottom}>
-                                    {`${currCapacity}/${maxCapacity}`}
-                                </Text>
-                            </View>
-                        </View>
-                    )
-                }
-            </AnimatedCircularProgress>
+                        )
+                    }
+                </AnimatedCircularProgress>
+            </ScrollView>
         </View>
     );
 }

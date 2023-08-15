@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
         borderTopColor: colors["cathay-light-gray"],
         borderTopWidth:3,
         paddingVertical:10,
+        marginHorizontal:-20,
     },
 
     extraInfo: {

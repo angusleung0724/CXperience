@@ -124,10 +124,10 @@ const testLoungeData = {
     className : "First Class",
     maxCapacity : 40,
     currCapacity : 35,
-    food:["Your Mom", "Your Mom"],
-    beverage:["Your Mom", "Your Mom"],
-    shower:["Your Mom", "Your Mom"],
-    more:["Your Mom", "Your Mom"],
+    food:["Food 1", "Food 2", "Food 2", "Food 2", "Food 2", "Food 2","Food 2"],
+    beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
+    shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
+    more:["Random","Random","Random","Random","Random","Random","Random","Random"],
     imagePath: require("./src/assets/images/wing_first.jpeg")
   },
   "The Wing, Business Class": {
@@ -135,10 +135,10 @@ const testLoungeData = {
     className : "Business Class",
     maxCapacity : 40,
     currCapacity : 35,
-    food:["Your Mom", "Your Mom"],
-    beverage:["Your Mom", "Your Mom"],
-    shower:["Your Mom", "Your Mom"],
-    more:["Your Mom", "Your Mom"],
+    food:["Food 1", "Food 2", "Food 2", "Food 2", "Food 2", "Food 2","Food 2"],
+    beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
+    shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
+    more:["Random","Random","Random","Random","Random","Random","Random","Random"],
     imagePath: require("./src/assets/images/wing_business.png")
   },
   "The Pier, First Class": {
@@ -146,10 +146,10 @@ const testLoungeData = {
     className : "First Class",
     maxCapacity : 40,
     currCapacity : 35,
-    food:["Your Mom", "Your Mom"],
-    beverage:["Your Mom", "Your Mom"],
-    shower:["Your Mom", "Your Mom"],
-    more:["Your Mom", "Your Mom"],
+    food:["Food 1", "Food 2", "Food 2", "Food 2", "Food 2", "Food 2","Food 2"],
+    beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
+    shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
+    more:["Random","Random","Random","Random","Random","Random","Random","Random"],
     imagePath: require("./src/assets/images/pier_first.png")
   },
   "The Pier, Business Class": {
@@ -157,10 +157,10 @@ const testLoungeData = {
     className : "Business Class",
     maxCapacity : 40,
     currCapacity : 35,
-    food:["Your Mom", "Your Mom"],
-    beverage:["Your Mom", "Your Mom"],
-    shower:["Your Mom", "Your Mom"],
-    more:["Your Mom", "Your Mom"],
+    food:["Food 1", "Food 2", "Food 2", "Food 2", "Food 2", "Food 2","Food 2"],
+    beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
+    shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
+    more:["Random","Random","Random","Random","Random","Random","Random","Random"],
     imagePath: require("./src/assets/images/pier_business.png")
   },
   "The Deck, Business Class": {
@@ -168,10 +168,10 @@ const testLoungeData = {
     className : "Business Class",
     maxCapacity : 40,
     currCapacity : 35,
-    food:["Your Mom", "Your Mom"],
-    beverage:["Your Mom", "Your Mom"],
-    shower:["Your Mom", "Your Mom"],
-    more:["Your Mom", "Your Mom"],
+    food:["Food 1", "Food 2", "Food 2", "Food 2", "Food 2", "Food 2","Food 2"],
+    beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
+    shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
+    more:["Random","Random","Random","Random","Random","Random","Random","Random"],
     imagePath: require("./src/assets/images/deck_business.png")
   },
 }

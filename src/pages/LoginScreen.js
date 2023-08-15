@@ -12,7 +12,7 @@ export default function LoginScreen({navigation, route}) {
 
     // HERE NEED TO USE AUTH FROM DB (maybe not)
     const handlePress = () => {
-        if (text != "123456" && text != "2") {
+        if (parseInt(text) > 10 || parseInt(text) < 0) {
             alert("Invalid Code!");
             return;
         }

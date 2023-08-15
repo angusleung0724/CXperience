@@ -132,7 +132,7 @@ export default function MapScreen({ navigation, route}) {
         </View>
         <View style={styles.instruction}>
           <Text style={styles.instructionText}>
-            Select your lounge
+            Click on a lounge
           </Text>
           <MapIcon name="map-marker" style={styles.markerIcon}/>
         </View>
