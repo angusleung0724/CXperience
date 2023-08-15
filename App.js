@@ -128,7 +128,8 @@ const testLoungeData = {
     beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
     shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
     more:["Random","Random","Random","Random","Random","Random","Random","Random"],
-    imagePath: require("./src/assets/images/wing_first.jpeg")
+    imagePath: require("./src/assets/images/wing_first.jpeg"),
+    id: "wing-first"
   },
   "The Wing, Business Class": {
     name: "The Wing",
@@ -139,7 +140,8 @@ const testLoungeData = {
     beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
     shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
     more:["Random","Random","Random","Random","Random","Random","Random","Random"],
-    imagePath: require("./src/assets/images/wing_business.png")
+    imagePath: require("./src/assets/images/wing_business.png"),
+    id: "wing-business"
   },
   "The Pier, First Class": {
     name: "The Pier",
@@ -150,7 +152,8 @@ const testLoungeData = {
     beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
     shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
     more:["Random","Random","Random","Random","Random","Random","Random","Random"],
-    imagePath: require("./src/assets/images/pier_first.png")
+    imagePath: require("./src/assets/images/pier_first.png"),
+    id: "pier-first"
   },
   "The Pier, Business Class": {
     name: "The Pier",
@@ -161,7 +164,8 @@ const testLoungeData = {
     beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
     shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
     more:["Random","Random","Random","Random","Random","Random","Random","Random"],
-    imagePath: require("./src/assets/images/pier_business.png")
+    imagePath: require("./src/assets/images/pier_business.png"),
+    id: "pier-business"
   },
   "The Deck, Business Class": {
     name: "The Deck",
@@ -172,7 +176,8 @@ const testLoungeData = {
     beverage:["Drink", "Drink","Drink","Drink","Drink","Drink","Drink","Drink"],
     shower:["Shower","Shower","Shower","Shower","Shower","Shower","Shower","Shower"],
     more:["Random","Random","Random","Random","Random","Random","Random","Random"],
-    imagePath: require("./src/assets/images/deck_business.png")
+    imagePath: require("./src/assets/images/deck_business.png"),
+    id: "deck"
   },
 }
 

@@ -10,7 +10,22 @@ import colors from "../theme/colors";
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { ButtonGroup } from '@rneui/themed';
 
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
+const firebaseConfig = {
+    apiKey: "AIzaSyD1JJ19SxkU2TVn74PgjBxIpeCsYU4pT60",
+    authDomain: "cxperience-71bc1.firebaseapp.com",
+    projectId: "cxperience-71bc1",
+    storageBucket: "cxperience-71bc1.appspot.com",
+    messagingSenderId: "145824324668",
+    appId: "1:145824324668:web:d93fd165de812e4668f739",
+    measurementId: "G-14DEWR146Y"
+};
+  
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app)
 
 // pass in modalvisible, set modal visible
 // pass in path of image, name, location, class, amenities
@@ -49,13 +64,19 @@ export default function LoungeDetailsModal({
     beverage,
     shower,
     more,
-    name}) {
+    name,
+    id}) {
     const toggleModal = () => {
         setModalVisible(!modalVisible);
     }
     const [currCard, setCurrCard] = useState(0);
-    
-
+    const [curCapacity, setCurCapacity] = useState(0);
+    function refreshData() {
+        getDoc(doc(db, "lounges", id)).then((docSnap) => {
+            setCurCapacity(docSnap.data().current);
+        });
+    }
+    useEffect(refreshData, []);
     return (
         <>
             <View style={styles.centeredView}>
@@ -81,7 +102,7 @@ export default function LoungeDetailsModal({
                                         <Icon name="close" style={styles.closeButton}/>
                                     </TouchableOpacity>
                                 </View>
-                                {currCard == 0 ? <ProgressBar maxCapacity={maxCapacity} currCapacity={currCapacity}/> : null}
+                                {currCard == 0 ? <ProgressBar action={refreshData} maxCapacity={maxCapacity} currCapacity={curCapacity}/> : null}
                                 {currCard == 1 ? <InfoPage title="Food" points={food}/> : null}
                                 {currCard == 2 ? <InfoPage title="Beverage" points={beverage}/> :null}
                                 {currCard == 3 ? <InfoPage title="Showers" points={shower}/> : null}
@@ -180,7 +201,7 @@ const Description = ({index, item}) => {
 
 
 
-const ProgressBar = ({maxCapacity, currCapacity}) => {
+const ProgressBar = ({maxCapacity, currCapacity, action}) => {
     const calculatePercent = () => {
         return Math.floor(currCapacity * 100 / maxCapacity);
     }
@@ -189,7 +210,7 @@ const ProgressBar = ({maxCapacity, currCapacity}) => {
     // ADD API CALL HERE ? and useEffect as well probably to update the state (initialise with the props one)
     const onRefresh = useCallback(()=> {
         setRefreshing(true);
-        console.log("gay");
+        action();
         setTimeout(() => {setRefreshing(false)}, 2000);
     });
     return (
