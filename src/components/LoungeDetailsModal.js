@@ -11,7 +11,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { ButtonGroup } from '@rneui/themed';
 
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, onSnapshot } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD1JJ19SxkU2TVn74PgjBxIpeCsYU4pT60",
@@ -72,7 +72,7 @@ export default function LoungeDetailsModal({
     const [currCard, setCurrCard] = useState(0);
     const [curCapacity, setCurCapacity] = useState(0);
     function refreshData() {
-        getDoc(doc(db, "lounges", id)).then((docSnap) => {
+        return onSnapshot(doc(db, "lounges", id), (docSnap) => {
             setCurCapacity(docSnap.data().current);
         });
     }
@@ -102,7 +102,7 @@ export default function LoungeDetailsModal({
                                         <Icon name="close" style={styles.closeButton}/>
                                     </TouchableOpacity>
                                 </View>
-                                {currCard == 0 ? <ProgressBar action={refreshData} maxCapacity={maxCapacity} currCapacity={curCapacity}/> : null}
+                                {currCard == 0 ? <ProgressBar maxCapacity={maxCapacity} currCapacity={curCapacity}/> : null}
                                 {currCard == 1 ? <InfoPage title="Food" points={food}/> : null}
                                 {currCard == 2 ? <InfoPage title="Beverage" points={beverage}/> :null}
                                 {currCard == 3 ? <InfoPage title="Showers" points={shower}/> : null}
@@ -221,7 +221,7 @@ const ProgressBar = ({maxCapacity, currCapacity, action}) => {
                 </Text>
             </View>
             <ScrollView
-                refreshControl={
+                bounces={false} refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }>
                 <AnimatedCircularProgress

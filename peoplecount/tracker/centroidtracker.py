@@ -55,6 +55,9 @@ class CentroidTracker:
 			# to update
 			return self.objects
 
+		MINSIZE = 100
+		# rects = [r for r in rects if r[2] - r[0] > MINSIZE and r[3] - r[1] > MINSIZE]
+
 		# initialize an array of input centroids for the current frame
 		inputCentroids = np.zeros((len(rects), 2), dtype="int")
 

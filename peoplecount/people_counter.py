@@ -17,6 +17,7 @@ import dlib
 import json
 import csv
 import cv2
+from time import perf_counter
 
 import firebase_admin
 from firebase_admin import credentials
@@ -50,7 +51,7 @@ def parse_arguments():
     # confidence default 0.4
     ap.add_argument("-c", "--confidence", type=float, default=0.4,
         help="minimum probability to filter weak detections")
-    ap.add_argument("-s", "--skip-frames", type=int, default=30,
+    ap.add_argument("-s", "--skip-frames", type=int, default=15,
         help="# of skip frames between detections")
     ap.add_argument("-l", "--lounge", required=False, help="Cathay Lounge name (Firestore)")
     args = vars(ap.parse_args())
@@ -59,6 +60,8 @@ def parse_arguments():
 def send_mail():
 	# function to send the email alerts
 	Mailer().send(config["Email_Receive"])
+
+timer = perf_counter()
 
 def log_data(move_in, in_time, move_out, out_time, total):
 	# function to log the counting data
@@ -71,8 +74,12 @@ def log_data(move_in, in_time, move_out, out_time, total):
 		if myfile.tell() == 0: # check if header rows are already existing
 			wr.writerow(("Move In", "In Time", "Move Out", "Out Time"))
 			wr.writerows(export_data)
-	
-	db.collection("lounges").document(THE_LOUNGE).update({ "current": total })
+
+	global timer
+	newtime = perf_counter()
+	if newtime > timer + 3:
+		db.collection("lounges").document(THE_LOUNGE).update({ "current": total })
+		timer = newtime
 
 def people_counter():
 	# main function for people_counter.py
@@ -88,6 +95,8 @@ def people_counter():
 
 	global THE_LOUNGE
 	THE_LOUNGE = args.get("lounge", THE_LOUNGE)
+	if not THE_LOUNGE:
+		THE_LOUNGE = "pier-business"
 
 	# if a video path was not supplied, grab a reference to the ip camera
 	if not args.get("input", False):
