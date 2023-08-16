@@ -9,7 +9,7 @@ import colors from '../theme/colors';
 export default function MapScreen({ navigation, route}) {
   const [modalVisible, setModalVisible] = useState(false)
   const loungeData = route.params.loungeData.testLoungeData;
-  const rec = route.paramas.rec;
+  const rec = route.params.rec;
   const [currLounge, setCurrLounge] = useState("The Deck, Business Class");
   const [dropDown, setDropdown] = useState(false);
 

@@ -152,7 +152,10 @@ const testLoungeData = {
       "The Long Bar\n\nTake a seat at our iconic Long Bar—made with gleaming, white marble. Sip a glass of premium champagne or a fine wine with scenic overlooks of the tarmac.", 
       "The Coffee Loft\n\nEnjoy a hot coffee before your flight at our Coffee Loft."
     ],
-    shower: [],
+    shower: [
+      "Day Suites\n\nUnwind in one of our eight Day Suites, with quiet views over the runway. Furnished with a daybed, reading light, and privacy curtains, each Day Suite makes for a perfect area to catch up on sleep or work undisturbed, before boarding.", 
+      "Shower suites\n\nEnjoy a shower in our shower suites before your flight!"
+    ],
     more:[
       "Luggage Rack\n\nOur luggage racks offer generous storage capacity for your belongings."
     ],
@@ -190,7 +193,6 @@ const testLoungeData = {
       "The Noodle Bar\n\nSatisfy your palate for Chinese comfort foods—sample dim sum, char siu buns, dumplings, and other regional specials.", 
       "Tea House\n\nUnique to the Pier Business lounge is our first Teahouse—where a superior tea experience awaits. You’ll find seasonal and artisanal tea varieties, served by fine tea specialists.",
       "Food Hall\n\nThe deli-style Food Hall resembles a market, where you can select from a variety of quick bites—tapas, cheese board, salads, fish platter—for a convenient and flavourful experience. Options are plentiful, and you’ll find hot food, sandwiches, desserts, and fruit, all available to order."
-
     ],
     beverage:[
       "The Bar\n\nOrder your favourite tipple, or one of our signature cocktails, at The Bar—a warm and elegant meeting place with green onyx walls and walnut wood panels—where you can soak in the views from within a rich, atmospheric setting.",
@@ -213,11 +215,15 @@ const testLoungeData = {
       "The Noodle Bar\n\nDine in comfort and style at our iconic Noodle Bar – our open-kitchen concept that serves a selection of local classics, plus regional and Asian specialties such as Sichuanese dan dan noodles, Singapore Laksa, and Taiwanese beef noodles.", 
       "Self-service buffet\n\nSelf-service buffet offers a Buffet selection with a wide range of food options."
     ],
-    beverage: [],
+    beverage: [
+      "The Bar\n\nOrder your favourite tipple, or one of our signature cocktails, at The Bar—a warm and elegant meeting place with green onyx walls and walnut wood panels—where you can soak in the views from within a rich, atmospheric setting.",
+      "Tea House\n\nUnique to the Pier Business lounge is our first Teahouse—where a superior tea experience awaits. You’ll find seasonal and artisanal tea varieties, served by fine tea specialists.",
+    ],
     shower:[
       "Shower suites\n\nEnjoy one of our eight shower rooms, each equipped with premium bath products and fluffy towels. Ask our shower attendants to serve you with personal amenities, including hair and shaving products."
     ],
     more:[
+      "Workstation\n\nOur workstations are equipped with a suite of useful tools and facilities, including phones, printers, and high-speed web access.",
       "Lockers\n\nOur lounge provides lockers where you can store your valuables."
     ],
     imagePath: require("./src/assets/images/deck_business.png"),
