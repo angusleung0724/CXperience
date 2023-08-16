@@ -9,10 +9,11 @@ export default function LoginScreen({navigation, route}) {
     const [text, setText] = useState("");
     const setBookingCode = route.params.setBookingCode;
     const setHeader = route.params.setHeader;
+    const flights = route.params.flights;
 
     // HERE NEED TO USE AUTH FROM DB (maybe not)
     const handlePress = () => {
-        if (parseInt(text) > 10 || parseInt(text) < 0) {
+        if (!(flights[text])) {
             alert("Invalid Code!");
             return;
         }

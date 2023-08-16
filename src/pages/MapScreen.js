@@ -9,7 +9,7 @@ import colors from '../theme/colors';
 export default function MapScreen({ navigation, route}) {
   const [modalVisible, setModalVisible] = useState(false)
   const loungeData = route.params.loungeData.testLoungeData;
-  const rec = route.params.rec;
+  const rec = "The Deck, Business Class";
   const [currLounge, setCurrLounge] = useState("The Deck, Business Class");
   const [dropDown, setDropdown] = useState(false);
 
@@ -179,7 +179,7 @@ const DropDown = () => {
   return (
     <Animated.View style={[styles.instruction2, {opacity:opac, transform:[{translateY:transY}]}]}>
             <Text style={styles.instructionText2}>
-              Recommended: {rec ? rec : "The Deck, Business Class"}
+              Recommended: The Deck, Business Class
             </Text>
     </Animated.View> 
   );

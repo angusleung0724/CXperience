@@ -284,14 +284,15 @@ export default function App() {
               component={LoginScreen}
               initialParams={{
                 setHeader:setIsLogin, 
-                setBookingCode:setBookingCode
+                setBookingCode:setBookingCode,
+                flights: testFlightData
               }}/>
             <Stack.Screen 
               name="Map" 
               component={MapScreen}
               initialParams={{
                 loungeData:{testLoungeData},
-                rec: testFlightData[bookingCode].rec
+                rec: testFlightData[bookingCode]?.rec ?? "The Deck, Business Class"
               }}
               options={{
                 headerLeft: () => <></>,
