@@ -213,13 +213,13 @@ const ProgressBar = ({maxCapacity, currCapacity, action}) => {
                     rotation={0}
                     fill={calculatePercent()}
                     duration={1300}
-                    tintColor={colors["cathay-dark-green"]}
+                    tintColor={calculatePercent() >= 75 ? "darkred" : colors["cathay-dark-green"]}
                     backgroundColor={colors["cathay-light-gray"]}>
                     {
                         (fill) => (
                             <View style={styles.progressTextContainer}>
                                 <View style={styles.progressTextTop}>
-                                    <Text style={styles.progressText}>
+                                    <Text style={{...styles.progressText, color: calculatePercent() >= 75 ? "darkred" : colors["cathay-dark-green"]}}>
                                         {`${parseInt(fill )}%`}
                                     </Text>
                                 </View>
