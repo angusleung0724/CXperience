@@ -103,7 +103,7 @@ const testFlightData = {
       departTime: "2023-08-14 11:45:00",
       gate: "7",
       seat: "10C",
-      class: "Economy"
+      class: "The Wing, Business Class"
   },
   "AB1234": {
       from: "HKG",
@@ -113,7 +113,7 @@ const testFlightData = {
       gate: "62",
       seat: "16D",
       class: "Business",
-      rec: "The Wing, Business Class"
+      rec: "The Pier, Business Class"
   },
 }
 
@@ -291,7 +291,7 @@ export default function App() {
               component={MapScreen}
               initialParams={{
                 loungeData:{testLoungeData},
-                rec: testFlightData[bookingCode].rec
+                rec: testFlightData[bookingCode].rec ?? "The Deck, Business Class"
               }}
               options={{
                 headerLeft: () => <></>,

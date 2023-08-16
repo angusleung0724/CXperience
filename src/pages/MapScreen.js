@@ -6,7 +6,7 @@ import MapIcon from 'react-native-vector-icons/FontAwesome';
 import LoungeDetailsModal from "../components/LoungeDetailsModal";
 import colors from '../theme/colors';
 
-export default function MapScreen({ navigation, route}) {
+export default function MapScreen({ navigation, route }) {
   const [modalVisible, setModalVisible] = useState(false)
   const loungeData = route.params.loungeData.testLoungeData;
   const rec = route.params.rec;
@@ -137,8 +137,8 @@ export default function MapScreen({ navigation, route}) {
             if (!dropDown) {
               setDropdown(true);
               setMapRegion({
-                latitude: 22.317384072373544,
-                longitude: 113.9336629294858,
+                latitude: markers.filter(m => m.description == rec)[0].location.latitude,
+                longitude: markers.filter(m => m.description == rec)[0].location.longitude,
                 latitudeDelta: 0.001,
                 longitudeDelta: 0.001
               });
@@ -152,13 +152,13 @@ export default function MapScreen({ navigation, route}) {
           </Text>
           <MapIcon name="map-marker" style={styles.markerIcon}/>
         </TouchableOpacity>
-        {dropDown?  <DropDown/> : null}
+        {dropDown?  <DropDown rec={rec}/> : null}
       </View>
     </View>
   );
 }
 
-const DropDown = () => {
+const DropDown = ({ rec }) => {
   const opac = useRef(new Animated.Value(0)).current;
   const transY = useRef(new Animated.Value(-30)).current;
   useEffect(() => {
