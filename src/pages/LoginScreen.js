@@ -19,7 +19,7 @@ export default function LoginScreen({navigation, route}) {
         }
         setHeader(false);
         setBookingCode(text);
-        navigation.navigate('Map');
+        setTimeout(() => navigation.navigate('Map'), 1);
     };
 
     return (
