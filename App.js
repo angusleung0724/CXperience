@@ -284,7 +284,8 @@ export default function App() {
               component={LoginScreen}
               initialParams={{
                 setHeader:setIsLogin, 
-                setBookingCode:setBookingCode
+                setBookingCode:setBookingCode,
+                flights: testFlightData
               }}/>
             <Stack.Screen 
               name="Map" 
