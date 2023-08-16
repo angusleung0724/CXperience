@@ -179,7 +179,7 @@ const DropDown = () => {
   return (
     <Animated.View style={[styles.instruction2, {opacity:opac, transform:[{translateY:transY}]}]}>
             <Text style={styles.instructionText2}>
-              Recommended: {rec ? "The Pier, Business Class" : "The Deck, Business Class"}
+              Recommended: {rec ? rec : "The Deck, Business Class"}
             </Text>
     </Animated.View> 
   );

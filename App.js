@@ -28,9 +28,10 @@ const testFlightData = {
     to: "HKG",
     flightNo: "CX407",
     departTime: "2023-08-15 10:55:52",
-    gate: "9",
+    gate: "1",
     seat: "4F",
-    class: "Economy"
+    class: "Economy",
+    rec: "The Wing, Business Class"
   },
   "456DEF": {
       from: "HKG",
@@ -73,7 +74,7 @@ const testFlightData = {
       to: "LHR",
       flightNo: "CX252",
       departTime: "2023-08-12 06:15:00",
-      gate: "D4",
+      gate: "4",
       seat: "8B",
       class: "Business"
   },
@@ -111,7 +112,8 @@ const testFlightData = {
       departTime: "2023-08-14 08:30:00",
       gate: "62",
       seat: "16D",
-      class: "Business"
+      class: "Business",
+      rec: "The Wing, Business Class"
   },
 }
 
@@ -283,7 +285,7 @@ export default function App() {
               component={MapScreen}
               initialParams={{
                 loungeData:{testLoungeData},
-                rec: bookingCode == "AB1234"
+                rec: testFlightData[bookingCode].rec
               }}
               options={{
                 headerLeft: () => <></>,
