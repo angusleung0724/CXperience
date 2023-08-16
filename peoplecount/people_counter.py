@@ -51,7 +51,7 @@ def parse_arguments():
     # confidence default 0.4
     ap.add_argument("-c", "--confidence", type=float, default=0.4,
         help="minimum probability to filter weak detections")
-    ap.add_argument("-s", "--skip-frames", type=int, default=15,
+    ap.add_argument("-s", "--skip-frames", type=int, default=5,
         help="# of skip frames between detections")
     ap.add_argument("-l", "--lounge", required=False, help="Cathay Lounge name (Firestore)")
     args = vars(ap.parse_args())
@@ -77,7 +77,7 @@ def log_data(move_in, in_time, move_out, out_time, total):
 
 	global timer
 	newtime = perf_counter()
-	if newtime > timer + 3:
+	if newtime > timer + 1:
 		db.collection("lounges").document(THE_LOUNGE).update({ "current": total })
 		timer = newtime
 

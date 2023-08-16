@@ -23,52 +23,52 @@ const marginVertical = height * 0.07;
 
 // ALL HARDCODED DATA TO BE PASSED IN
 const testFlightData = {
-    "1": {
-      from: "TPE",
-      to: "HKG",
-      flightNo: "CX407",
-      departTime: "2023-08-15 10:55:52",
-      gate: "I9",
-      seat: "4F",
-      class: "Economy"
+  "123ABC": {
+    from: "TPE",
+    to: "HKG",
+    flightNo: "CX407",
+    departTime: "2023-08-15 10:55:52",
+    gate: "9",
+    seat: "4F",
+    class: "Economy"
   },
-  "2": {
+  "456DEF": {
       from: "HKG",
       to: "YVR",
       flightNo: "CX838",
       departTime: "2023-08-15 05:40:00",
-      gate: "J10",
+      gate: "10",
       seat: "9B",
       class: "Premium Economy"
   },
-  "3": {
+  "789GHI": {
     from: "HKG",
     to: "NRT",
     flightNo: "CX524",
     departTime: "2023-08-11 09:00:00",
-    gate: "A1",
+    gate: "5",
     seat: "12A",
     class: "Economy"
   },
-  "4": {
+  "1A2B3C": {
       from: "ICN",
       to: "HKG",
       flightNo: "CX416",
       departTime: "2023-08-11 12:30:00",
-      gate: "B2",
+      gate: "2",
       seat: "5C",
       class: "Premium Economy"
   },
-  "5": {
+  "A1B2C3": {
       from: "HKG",
       to: "SIN",
       flightNo: "CX739",
       departTime: "2023-08-12 02:45:00",
-      gate: "C3",
+      gate: "3",
       seat: "20D",
       class: "Economy"
   },
-  "6": {
+  "ABC123": {
       from: "HKG",
       to: "LHR",
       flightNo: "CX252",
@@ -77,39 +77,39 @@ const testFlightData = {
       seat: "8B",
       class: "Business"
   },
-  "7": {
+  "ABCDEF": {
       from: "PEK",
       to: "HKG",
       flightNo: "CX390",
       departTime: "2023-08-13 08:20:00",
-      gate: "E5",
+      gate: "5",
       seat: "15F",
       class: "Economy"
   },
-  "8": {
+  "123456": {
       from: "HKG",
       to: "SYD",
       flightNo: "CX138",
       departTime: "2023-08-13 03:10:00",
-      gate: "F6",
+      gate: "6",
       seat: "2A",
       class: "Premium Economy"
   },
-  "9": {
+  "ABCXYZ": {
       from: "HKG",
       to: "BKK",
       flightNo: "CX703",
       departTime: "2023-08-14 11:45:00",
-      gate: "G7",
+      gate: "7",
       seat: "10C",
       class: "Economy"
   },
-  "10": {
+  "AB1234": {
       from: "HKG",
       to: "SFO",
       flightNo: "CX870",
       departTime: "2023-08-14 08:30:00",
-      gate: "H8",
+      gate: "62",
       seat: "16D",
       class: "Business"
   },
@@ -186,7 +186,7 @@ const testLoungeData = {
   "The Pier, Business Class": {
     name: "The Pier",
     className : "Business Class",
-    maxCapacity : 550,
+    maxCapacity : 5,
     food:[
       "The Noodle Bar\n\nSatisfy your palate for Chinese comfort foods—sample dim sum, char siu buns, dumplings, and other regional specials.", 
       "Tea House\n\nUnique to the Pier Business lounge is our first Teahouse—where a superior tea experience awaits. You’ll find seasonal and artisanal tea varieties, served by fine tea specialists.",
@@ -288,7 +288,8 @@ export default function App() {
               name="Map" 
               component={MapScreen}
               initialParams={{
-                loungeData:{testLoungeData}
+                loungeData:{testLoungeData},
+                rec: bookingCode == "AB1234"
               }}
               options={{
                 headerLeft: () => <></>,
