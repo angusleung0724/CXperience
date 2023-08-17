@@ -77,7 +77,7 @@ def log_data(move_in, in_time, move_out, out_time, total):
 
 	global timer
 	newtime = perf_counter()
-	if newtime > timer + 1:
+	if newtime > timer + 0.1:
 		db.collection("lounges").document(THE_LOUNGE).update({ "current": total })
 		timer = newtime
 

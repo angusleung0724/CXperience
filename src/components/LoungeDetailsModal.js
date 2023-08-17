@@ -52,9 +52,15 @@ export default function LoungeDetailsModal({
     }
     const [currCard, setCurrCard] = useState(0);
     const [curCapacity, setCurCapacity] = useState(0);
+    const [dataSource, setDataSource] = useState(false);
     function refreshData() {
         return onSnapshot(doc(db, "lounges", id), (docSnap) => {
-            setCurCapacity(docSnap.data().current);
+            const docData = docSnap.data();
+            // console.log(docData);
+            // setDataSource(docData.use_fake_data);
+            setTimeout(() => {
+                setCurCapacity(docData.fake_counter > -1 ? docData.fake_counter : (docData.current + docData.adjust));
+            }, 1500);
         });
     }
     useEffect(refreshData, []);
