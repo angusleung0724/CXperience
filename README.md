@@ -4,7 +4,8 @@
 
 ## Running the application
 
-' npm run ios ' - iOS Simulator__
+' npm run ios ' - iOS Simulator
+<br />
 ' npm run '     - Expo Go
 
 ## Login Page
