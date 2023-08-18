@@ -32,7 +32,7 @@ const db = getFirestore(app)
 // pass in max capacity and capacity 
 
 
-
+let timeout = null;
 
 export default function LoungeDetailsModal({
     className, 
@@ -56,10 +56,11 @@ export default function LoungeDetailsModal({
     function refreshData() {
         return onSnapshot(doc(db, "lounges", id), (docSnap) => {
             const docData = docSnap.data();
-            // console.log(docData);
-            // setDataSource(docData.use_fake_data);
-            setTimeout(() => {
-                setCurCapacity(docData.fake_counter > -1 ? docData.fake_counter : (docData.current + docData.adjust));
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(() => {
+                setCurCapacity((docData.current + docData.adjust));
             }, 1500);
         });
     }

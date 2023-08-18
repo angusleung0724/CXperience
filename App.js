@@ -76,7 +76,8 @@ const testFlightData = {
       departTime: "2023-08-12 06:15:00",
       gate: "4",
       seat: "8B",
-      class: "Business"
+      class: "Business",
+      rec: "The Wing, Business Class"
   },
   "ABCDEF": {
       from: "PEK",

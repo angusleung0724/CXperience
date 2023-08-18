@@ -55,12 +55,12 @@ export default function MapScreen({ navigation, route }) {
     {
       type: 'Lounge',
       location: {
-        latitude: 22.313176535581737,
-        longitude: 113.9276394340366,
+        latitude: 22.313716535581737,
+        longitude: 113.9257194340366,
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
-      description: 'The Pier, Business Class',
+      description: 'The Pier, First Class',
     },
     {
       type: 'Lounge',
@@ -70,7 +70,7 @@ export default function MapScreen({ navigation, route }) {
         latitudeDelta: 0.5,
         longitudeDelta: 0.5,
       },
-      description: 'The Pier, First Class',
+      description: 'The Pier, Business Class',
     },
     {
       type: 'Lounge',
