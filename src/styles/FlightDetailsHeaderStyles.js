@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
         borderTopColor: colors["cathay-light-gray"],
         borderTopWidth:3,
         paddingVertical:10,
+        marginHorizontal:-20,
     },
 
     extraInfo: {
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
     cathayLogo: {
         width:28,
         height:28,
-        marginHorizontal:"1%"
+        marginRight:"4%"
     },
 
     flightDetails: {
@@ -48,7 +49,7 @@ export const styles = StyleSheet.create({
         padding:5,
         fontWeight: 700,
         fontSize:21,
-        fontFamily: "Arial"
+        fontFamily: "Sansation-Bold"
     },
 
     cardContainer: {
@@ -63,17 +64,35 @@ export const styles = StyleSheet.create({
         alignItems: "flex-start"
     },
     textBold: {
+        color: colors["cathay-black"],
         fontWeight: 700,
         paddingRight: "1%",
-        fontFamily: "Arial",
-        fontSize: 14
-
+        fontSize: 14,
+        fontFamily: "Sansation-BoldItalic"
+    
     },
     textNormal: {
+        color: colors["cathay-dark-green"],
         textAlign: "right",
-        fontFamily: "Arial",
-        fontSize: 14
-    }
+        fontSize: 14,
+        fontFamily:"Sansation-BoldItalic"
+    },
+    barcode: {
+        width:360,
+        height:"auto",
+        aspectRatio:3
 
+    },
+    qrLogo:{
+        position:"absolute",
+        fontSize:17,
+        right:4,
+        top:-3,
+        color:colors["cathay-black"],
+    },
+    leftIcon:{
+        justifyContent:"center",
+        alignItems:"center"
+    }
 
 });

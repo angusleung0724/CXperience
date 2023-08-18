@@ -9,20 +9,23 @@ export default function LoginScreen({navigation, route}) {
     const [text, setText] = useState("");
     const setBookingCode = route.params.setBookingCode;
     const setHeader = route.params.setHeader;
+    const flights = route.params.flights;
+
+    // HERE NEED TO USE AUTH FROM DB (maybe not)
     const handlePress = () => {
-        if (text != "1" && text != "2") {
+        if (!(flights[text])) {
             alert("Invalid Code!");
             return;
         }
         setHeader(false);
         setBookingCode(text);
-        navigation.navigate('Profile');
+        setTimeout(() => navigation.navigate('Map'), 1);
     };
 
     return (
         <View style={styles.container}>
             <Image 
-                source={require("../assets/logo/cathay.png")}
+                source={require("../assets/logo/cathay_logo_gold.png")}
                 style={styles.image}
                 />
             <View style={styles.textInputContainer}>
