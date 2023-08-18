@@ -8,7 +8,7 @@
 ' npm run '     - Expo Go
 
 ## Login Page
-<img src="https://github.com/angusleung0724/CXperience/assets/86761921/eb0b6499-a6af-440e-8beb-e09f0cdce0a5" alt="alt text" width=250 height=120>
+<img src="https://github.com/angusleung0724/CXperience/assets/86761921/eb0b6499-a6af-440e-8beb-e09f0cdce0a5" alt="alt text" width=120 height=250>
 
 ## Map View
 ![Simulator Screenshot - iPhone 14 - 2023-08-18 at 11 51 01](https://github.com/angusleung0724/CXperience/assets/86761921/4b4fe3b2-0734-431e-9592-dc6d255af9b0)
